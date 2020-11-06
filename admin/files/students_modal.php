@@ -50,18 +50,14 @@
 
                         <div class="col-sm-9">
                             <span class="form-control" id="course_name" name="course_name" required>
-                                <?php
-                                $conn = $pdo->open();
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mark" class="col-sm-3 control-label">Student Mark%</label>
 
-                                $stmt = $conn->prepare("SELECT * FROM learner ");
-                                $stmt->execute();
-                                foreach($stmt as $row){
-
-                                    echo'<p>'.$row['course_name'].'</p>';
-
-                                }
-                                $pdo->close();
-                                ?>
+                        <div class="col-sm-9">
+                            <span class="form-control" id="mark" name="mark" required>
                             </span>
                         </div>
                     </div>
@@ -208,12 +204,12 @@
                       </div>
                   </div>
                   <div class="form-group">
-<!--                      <label for="mark" class="col-sm-3 control-label">Mark %</label>-->
-<!---->
-<!--                      <div class="col-sm-9">-->
-<!--                          <input type="text" placeholder="Enter Mark Out Of 100 (e.g 55 = 55%)" class="form-control" id="mark" name="mark" onkeypress="return /[0-9]/i.test(event.key)">-->
-<!--                      </div>-->
-<!--                  </div>-->
+                      <label for="mark" class="col-sm-3 control-label">Mark %</label>
+
+                      <div class="col-sm-9">
+                          <input type="text" placeholder="Enter Mark Out Of 100 (e.g 55 = 55%)" class="form-control" id="mark" name="mark" onkeypress="return /[0-9]/i.test(event.key)">
+                      </div>
+                  </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -224,31 +220,7 @@
     </div>
 </div>
 
-<!-- Delete -->
-<div class="modal fade" id="delete">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Deleting...</b></h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="./../admin/students_handle.php">
-                <input type="hidden" class="userid" name="id_delete">
-                <div class="text-center">
-                    <p>DELETE STUDENT</p>
-                    <h2 class="bold fullname"></h2>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
-              </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Update Photo -->
 <div class="modal fade" id="edit_photo">

@@ -4,10 +4,9 @@ include './../includes/session.php';
 $conn = $pdo->open();
 
 if (isset($_POST['stud_id'])) {
-    $id = $_POST['stud_id'];
 
     $stmt = $conn->prepare("SELECT * FROM learner WHERE id=:id");
-    $stmt->execute(['id' => $id]);
+    $stmt->execute(['id' => $_SESSION['admin']]);
     $row = $stmt->fetch();
 
     echo json_encode($row);
@@ -19,7 +18,6 @@ if (isset($_POST['userid'])) {
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $course_name =$_POST['course_name'];
 
     $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM learner WHERE email=:email AND id <>:id");
     $stmt->execute(['email'=>$email, 'id'=>$id]);
@@ -30,13 +28,13 @@ if (isset($_POST['userid'])) {
     else {
 
         $stmt = $conn->prepare("UPDATE learner SET email=:email,
-    password=:password, first_name=:first_name, last_name=:last_name,course_name=:course_name WHERE id=:id");
+    password=:password, first_name=:first_name, last_name=:last_name WHERE id=:id");
         $stmt->execute(['email' => $email, 'password' => $password, 'first_name' =>
-            $firstname, 'last_name' => $lastname, 'course_name' => $course_name, 'id' => $id]);
+            $firstname, 'last_name' => $lastname, 'id' => $id]);
 
         $_SESSION['success'] = 'Student updated successfully';
     }
-    header('location : students.php');
+    header('location: welcome.php');
 }
 
 if (isset($_POST['course_id'])) {

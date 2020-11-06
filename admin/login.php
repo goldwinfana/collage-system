@@ -37,7 +37,7 @@ if(isset($_SESSION["loggedin"])){
                    unset($_SESSION['success']);
                }
                ?>
-     <form action="verify.php" method="post" name="login">
+     <form action="../verify.php" method="post" name="login">
          <input name="login" hidden>
 <!--        -->
          <label>Username</label> <input type="text" name="username" class="form-control" required">

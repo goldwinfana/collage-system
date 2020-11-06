@@ -130,6 +130,7 @@ if(isset($_SESSION['success'])){
                 $('#password').val(response.password);
                 $('#firstname').val(response.first_name);
                 $('#lastname').val(response.last_name);
+                $('#mark').val(response.mark);
                 $('.fullname').val(response.first_name+' '+response.last_name);
             }
         });
