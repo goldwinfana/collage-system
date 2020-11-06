@@ -1,4 +1,7 @@
-<?php include './../includes/session.php'; ?>
+<?php include './../includes/session.php';
+if($_SESSION['user'] == 'learner'){
+    header('location: ./../learner/welcome.php');
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,4 +157,45 @@ if(isset($_SESSION['success'])){
             }
         });
     }
+</script>
+
+<script src="./../assets/js/main.js"></script>
+<?php include ('./../admin/files/students_modal.php')?>
+
+<script>
+    $(function() {
+
+        $(document).on('click', '.courses', function (e) {
+
+            e.preventDefault();
+            $('#courses').modal('show');
+        });
+
+
+        $(document).on('click', '.add-course', function (e) {
+
+            e.preventDefault();
+            $('.add-btn').attr('disabled',false);
+            $('.input-course').html(
+                '<div class="form-group">\n' +
+                '                    <label for="photo" class="col-sm-3 control-label">Course Name</label>\n' +
+                '\n' +
+                '                    <div class="col-sm-9">\n' +
+                '                      <input type="text" id="course_name" placeholder="Enter Course Name" name="course_name" onkeypress="return /[a-z]/i.test(event.key)" required>\n' +
+                '                    </div>\n' +
+                '                </div>'+
+
+
+                '<div class="form-group">\n' +
+                '                    <label for="photo" class="col-sm-3 control-label">Fee Amount</label>\n' +
+                '\n' +
+                '                    <div class="col-sm-9">\n' +
+                '                      <input type="text" id="fee" placeholder="Enter Fee Amount In Integer Format" name="fee" onkeypress="return /[0-9]/i.test(event.key)" required>\n' +
+                '                    </div>\n' +
+                '                </div>'
+            )
+        });
+    });
+
+
 </script>

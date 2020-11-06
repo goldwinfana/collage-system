@@ -26,7 +26,11 @@
 <?php include 'includes/session.php'; ?>
 <?php
   if(isset($_SESSION['user'])){
-    header('location: learner/welcome.php');
+      if($_SESSION['user'] == 'leaner'){
+          header('location: learner/welcome.php');
+      }elseif ($_SESSION['user'] == 'admin'){
+          header('location: admin/welcome.php');
+      }
   }
 
 ?>

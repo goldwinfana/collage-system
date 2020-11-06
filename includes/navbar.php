@@ -27,20 +27,19 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./">Collage System</a>
+            <a class="navbar-brand" href="javascript:void(0);">Collage System</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="./../admin/welcome.php"><i class="fa fa-home"></i> Home</a></li>
             
             ';
-                     if($_SESSION['user'] !='admin'){
+                     if($_SESSION['user'] =='admin'){
                      echo'  
   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-eye"></i> View<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                   
-  <li><a href="#">All Users</a></li>
+           
                         <li><a href="./../admin/students.php">Learners</a></li>
-                        <li><a href="#">Subjects</a></li>
+                        <li><a class="courses" href="#">Courses</a></li>
                         </ul>
                          </li>
         </ul>
@@ -80,5 +79,8 @@ echo '
         </ul>
     </div>
 </nav>';}
+
+ ?>
+
 
 

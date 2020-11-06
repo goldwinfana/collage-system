@@ -13,6 +13,26 @@ if (isset($_POST['stud_id'])) {
     echo json_encode($row);
 }
 
+if (isset($_POST['course_add'])) {
+
+    $course_name = $_POST['course_name'];
+    $fee =$_POST['fee'];
+
+    $stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM course WHERE course_name=:course_name");
+    $stmt->execute(['course_name'=>$course_name]);
+    $row = $stmt->fetch();
+    if($row['numrows'] > 0){
+        $_SESSION['error'] = 'Course Name Already Exits';
+    }else {
+
+        $stmt = $conn->prepare("INSERT INTO course(course_name,fee) VALUES(:course_name,:fee)");
+        $stmt->execute(['fee' => $fee, 'course_name' => $course_name]);
+        $_SESSION['success'] = 'Course added successfully';
+
+    }
+    header('location: '.$_SERVER['HTTP_REFERER']);
+}
+
 if (isset($_POST['userid'])) {
     $id = $_POST['userid'];
     $email = $_POST['email'];

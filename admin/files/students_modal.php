@@ -253,25 +253,53 @@
 
 
 <!-- Activate -->
-<div class="modal fade" id="activate">
+<div class="modal fade" id="courses">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Activating...</b></h4>
+              <h4 class="modal-title"><b>Available Courses...</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="users_activate.php">
-                <input type="hidden" class="userid" name="id">
+              <form class="form-horizontal" method="POST" action="./../admin/students_handle.php">
+                <input type="hidden" class="course_add" name="course_add">
                 <div class="text-center">
-                    <p>ACTIVATE USER</p>
-                    <h2 class="bold fullname"></h2>
+                    <button class="btn-secondary add-course">Add New Course <i class="fa fa-plus"></i></button><br/><br/>
+                    <?php
+                    $conn = $pdo->open();
+
+                    $stmt = $conn->prepare("SELECT * FROM course ");
+                    $stmt->execute();
+
+                    if($stmt->rowCount() > 0) {
+
+                        echo' 
+                                    <table>
+                                        <tr>
+                                            <th>Course Name</th>
+                                            <th>Fees</th>
+                                        </tr>
+                                        <tr>';
+                        foreach ($stmt as $row) {
+
+                            echo '
+                                <td>' . $row['course_name'] . '</td>
+                                 <td>' . $row['fee'] . '</td>
+                                </tr>';
+                        }
+                        echo '</table>';
+                        $pdo->close();
+                    }else{
+                        echo '<h3>No Course Found ...</h3>' ;
+                    }
+                    ?>
+                    <span class="input-course"></span>
                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="activate"><i class="fa fa-check"></i> Activate</button>
+              <button type="submit" class="btn btn-success btn-flat add-btn" disabled><i class="fa fa-check"></i> ADD</button>
               </form>
             </div>
         </div>

@@ -1,5 +1,11 @@
 <?php include './../includes/session.php'; ?>
-<?php include './../includes/navbar.php'; ?>
+<?php include './../includes/navbar.php';
+
+if($_SESSION['user'] == 'admin'){
+    header('location: ./../admin/welcome.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

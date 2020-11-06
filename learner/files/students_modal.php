@@ -18,20 +18,22 @@
 
                     if($stmt->rowCount() > 0) {
 
-                        foreach ($stmt as $row) {
-
-                            echo '
+                        echo' 
                                     <table>
                                         <tr>
                                             <th>Date Posted</th>
                                             <th>Announcements</th>
                                         </tr>
-                                        <tr>
+                                        <tr>';
+                        foreach ($stmt as $row) {
+
+                            echo '
                                 <td>' . $row['date_created'] . '</td>
                                 <td>' . $row['news'] . '</td>
-                               </tr>
-                                 </table>';
+                               </tr>';
+
                         }
+                        echo'  </table>';
                         $pdo->close();
                     }else{
                         echo '<tr>No News Posted ...</tr>' ;
@@ -69,22 +71,24 @@
 
                         if($stmt->rowCount() > 0) {
 
-                            foreach ($stmt as $row) {
-
-                                echo '
-                                    <table>
+                            echo '  <table>
                                         <tr>
                                             <th>Date Posted</th>
                                             <th>Materials</th>
                                             <th>File</th>
-                                        </tr>
+                                        </tr>';
+                            foreach ($stmt as $row) {
+
+                                echo '
+                                   
                                         <tr>
                                 <td>' . $row['date_created'] . '</td>
                                 <td>' . $row['tool'] . '</td>
                                 <td><a href="./../../assets/pdf/' . $row['file'] . '" class="btn"><i class="fa fa-download"></i> Download</a></td>
-                                </tr>
-                                 </table>';
+                                </tr>';
+
                             }
+                            echo '</table>';
                             $pdo->close();
                         }else{
                            echo '<tr>No Materials Found ...</tr>' ;
@@ -121,23 +125,24 @@
                     $stmt->execute(['admin_id'=>$_SESSION['admin']]);
 
                     if($stmt->rowCount() > 0) {
-
-                        foreach ($stmt as $row) {
-
-                            echo '
+                        echo '
                                     <table>
                                         <tr>
                                             <th>Course</th>
                                             <th>Mark %</th>
                                             <th>Fees</th>
                                         </tr>
-                                        <tr>
+                                        <tr>';
+                        foreach ($stmt as $row) {
+
+                            echo '
                                 <td>' . $row['course_name'] . '</td>
                                 <td>' . $row['mark'] . '</td>
                                  <td>' . $row['fees'] . '</td>
-                                </tr>
-                                 </table>';
+                                </tr>';
+
                         }
+                        echo '</table>';
                         $pdo->close();
                     }else{
                         echo '<tr>No Mark Found ...</tr>' ;

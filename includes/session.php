@@ -2,9 +2,13 @@
 	include 'conn.php';
 	session_start();
 //
-//    if(isset($_SESSION['admin'])){
-//		header('location: welcome.php');
+//    if($_SESSION['admin'] =='learner' && $_SESSION[' loggedin']){
+//		header('location: ./../learner/welcome.php');
 //	}
+//
+//if($_SESSION['admin'] =='learner' && $_SESSION[' loggedin']){
+//    header('location: ./../admin/welcome.php');
+//}
 
 //
 //

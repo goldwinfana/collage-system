@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
 
         if($row['numrows1'] > 0){
             if($password == $row['password']){
-                $_SESSION['user'] = 'learner';
+                $_SESSION['user'] = 'admin';
                 $_SESSION['admin'] = $row['admin_id'];
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $row['email'];
@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
 
         if($row['numrows1'] > 0){
             if($password == $row['password']){
-                $_SESSION['user'] = 'admin';
+                $_SESSION['user'] = 'learner';
                 $_SESSION['admin'] = $row['id'];
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $row['email'];
